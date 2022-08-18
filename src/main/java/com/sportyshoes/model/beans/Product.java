@@ -29,14 +29,15 @@ public class Product
 	@OneToOne(cascade = CascadeType.ALL)   
     @JoinColumn(name = "type_id", referencedColumnName = "id") //e.g. Athletics, Soccer, BasketBall, Hockey
 	private ProductType productType;
-	
-	@ManyToOne  
-    @JoinColumn(name = "grp_id", referencedColumnName = "id") //e.g. Female, Male, Unisex, Adult, Youth
-	private ProductGroup productGroup;
+
 	
 	@OneToOne(cascade = CascadeType.ALL)   
     @JoinColumn(name = "brand_id", referencedColumnName = "id") //e.g. Nike, Adidas, Finish Line
 	private ProductBrand productBrand;
+	
+	@ManyToOne  
+    @JoinColumn(name = "grp_id", referencedColumnName = "id") //e.g. Female, Male, Unisex, Adult, Youth
+	private ProductGroup productGroup;
 	
 	
 
