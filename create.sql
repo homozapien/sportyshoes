@@ -1,0 +1,10 @@
+create table hibernate_sequence (next_val bigint) engine=InnoDB;
+insert into hibernate_sequence values ( 1 );
+create table product (uuid varchar(255) not null, name varchar(255), brand_id varchar(255), grp_id varchar(255), type_id varchar(255), primary key (uuid)) engine=InnoDB;
+create table product_brand (id varchar(255) not null, name varchar(255), primary key (id)) engine=InnoDB;
+create table product_group (id varchar(255) not null, generic varchar(255), name varchar(255), primary key (id)) engine=InnoDB;
+create table product_type (id varchar(255) not null, usage_type varchar(255), primary key (id)) engine=InnoDB;
+create table usermgmt (email_id varchar(255) default 'admin@sportyshoes.com' not null, password varchar(255) default '1234', type_of_user varchar(255) default 'Admin', primary key (email_id)) engine=InnoDB;
+alter table product add constraint FKmvkt1rb6tm0gmdlyjyunyykm2 foreign key (brand_id) references product_brand (id);
+alter table product add constraint FKkve8d8qum2m24wcv6339lw13x foreign key (grp_id) references product_group (id);
+alter table product add constraint FKajjopj7ffr42w11bav8gut0cp foreign key (type_id) references product_type (id);
