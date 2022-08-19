@@ -11,23 +11,25 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Table(name = "usermgmt")
 @Data
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserMgmt implements Serializable
 {
 	private static final long serialVersionUID = 3756680645803624405L;
 	@Id
-	@ColumnDefault("'admin@sportyshoes.com'")
+	//@ColumnDefault("'admin@sportyshoes.com'")
 	private String emailId;  
-	@ColumnDefault("'1234'")
+	//@ColumnDefault("'1234'")
 	private String password; 
-	@ColumnDefault("'Admin'")
+	//@ColumnDefault("'Admin'")
 	private String typeOfUser;	
 	
 	
