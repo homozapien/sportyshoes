@@ -26,7 +26,7 @@ public class LoginController
 	@RequestMapping(value = "checkUser",method = RequestMethod.POST)
 	public String checkUserDetails(HttpServletRequest req, Model model) 
 	{   
-		String email     = req.getParameter("email");
+		String email      = req.getParameter("email");
 		String password   = req.getParameter("password");
 		String typeOfUser = req.getParameter("typeOfUser");
 		
@@ -40,6 +40,7 @@ public class LoginController
 		if(loginService.checkLoggedOnUser(user)) 
 		{
 			returnView = typeOfUser.equalsIgnoreCase("Admin") ? "admin" : "customer";
+			req.getSession().setAttribute("loggedInUser", returnView);
 		}
 		else
 		{

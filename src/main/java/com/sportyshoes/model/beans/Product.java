@@ -1,12 +1,13 @@
 package com.sportyshoes.model.beans;
 
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,27 +23,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Product 
 {	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "contact_id")
-	private String uuid; //unique item number for a product (e.g BarCode) ; can be tied to qtt during purchase
+	@Id   
+	private String prdid; //unique item number for a product (e.g BarCode) ; can be tied to qtt during purchase
 	
-	private String name; //Product name
+	private String prdname; //Product name
 	
-	@OneToOne(cascade = CascadeType.ALL)   
-    @JoinColumn(name = "type_id", referencedColumnName = "id") //e.g. Athletics, Soccer, BasketBall, Hockey
-	private ProductType productType;
+	 //e.g. Athletics, Soccer, BasketBall, Hockey
+	private String prdusage;
 
+	//e.g. Nike, Adidas, Finish Line
+	private String prdbrand;
 	
-	@OneToOne(cascade = CascadeType.ALL)   
-    @JoinColumn(name = "brand_id", referencedColumnName = "id") //e.g. Nike, Adidas, Finish Line
-	private ProductBrand productBrand;
-	
-	@ManyToOne  
-    @JoinColumn(name = "grp_id", referencedColumnName = "id") //e.g. Female, Male, Unisex, Adult, Youth
-	private ProductGroup productGroup;
-	
-	private int quantity;
-    private double unitPrice;
+    @Lob
+    private byte[] prdlogo;
+    
+
+    private double prdprice;
 	
 }
