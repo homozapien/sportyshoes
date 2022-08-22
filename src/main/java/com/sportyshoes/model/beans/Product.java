@@ -2,17 +2,15 @@ package com.sportyshoes.model.beans;
 
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder(toBuilder=true)
 public class Product 
 {	
 	@Id   
@@ -39,5 +38,8 @@ public class Product
     
 
     private double prdprice;
+    
+    @Transient
+    private String base64PrdLogo;
 	
 }

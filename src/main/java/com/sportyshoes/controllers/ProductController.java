@@ -1,6 +1,7 @@
 package com.sportyshoes.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -64,6 +65,15 @@ public class ProductController
 	   String result = productService.createProduct(product);  
 	   modelMap.addAttribute("msg", result);
 	   return "product";
+	}
+	
+	@RequestMapping(value = "/getAllProducts",method = RequestMethod.GET)
+	public String getAllProductItems(ModelMap modelMap)
+	{
+		List<Product> productList = productService.getAllProducts();
+		modelMap.addAttribute("productList", productList);
+		return "dashboard";
+		
 	}
 
 }

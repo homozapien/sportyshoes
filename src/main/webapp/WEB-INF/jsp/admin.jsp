@@ -11,7 +11,7 @@
 	<button class="btn btn-dark" onclick="history.back()">Go Back</button>
 	<hr>
 
-<c:set var="adminUser" value="admin" />
+	<c:set var="adminUser" value="admin" />
 
 	<c:choose>
 		<c:when
@@ -34,15 +34,16 @@
 							<td><a href="passwordmgmt.jsp">Change Password</a></td>
 							<td>Password Management</td>
 						</tr>
-						
+
 						<tr>
-							<td><a href="/sportyshoes/showProductView">Product</a></td>
+							<td><a href="/sportyshoes/showProductView">Product Setup</a></td>
 							<td>Setup Product Items</td>
 						</tr>
-						
+
 						<tr>
-							<td><a href="DataloaderController">Reporting Dashboard</a></td>
-							<td>Show readonly reporting dashboard</td>
+							<td><a href="/sportyshoes/getAllProducts">Reporting
+									Dashboard</a></td>
+							<td>Readonly Reporting Dashboard</td>
 						</tr>
 					<tbody>
 				</table>

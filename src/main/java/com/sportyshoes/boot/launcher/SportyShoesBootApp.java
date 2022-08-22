@@ -39,9 +39,6 @@ public class SportyShoesBootApp implements CommandLineRunner {
 	private void quickTest()
 	{
 		UserMgmt user = new UserMgmt();
-		/*user.setEmailId("admin@sportyshoes.com");
-		user.setPassword("1234");
-		user.setTypeOfUser("Admin"); */
 		
 		user.setEmailId("a@a.com");
 		user.setPassword("1");
