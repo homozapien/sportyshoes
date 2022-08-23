@@ -79,15 +79,45 @@
 
 								</div>
 							</div>
+							
+							 <div class="row mb-3">
+
+								<label for="prdusage" class="col-sm-2 col-form-label">Usage Type</label>
+								<div class="col-sm-10">
+									<select name="prdusage">
+                                                 <c:forEach items="${prdUsageList}" var="usageType">
+                                                       <option value="${usageType.usage_id}">${usageType.usageType}</option>
+                                                 </c:forEach>
+                                     </select>
+
+								</div>
+							</div>
+							
+							
+                         <div class="row mb-3">
+
+								<label for="prdbrand" class="col-sm-2 col-form-label">Brand</label>
+								<div class="col-sm-10">
+									<select name="prdbrand">
+                                                 <c:forEach items="${pdrBrandList}" var="brand">
+                                                       <option value="${brand.brand_id}">${brand.brand_name}</option>
+                                                 </c:forEach>
+                                     </select>
+
+								</div>
+							</div>
+							
+							
 							<hr />
-							<fieldset class="row mb-3">
+						<!--  	<fieldset class="row mb-3">
 
 								<legend class="col-form-label col-sm-2 pt-0">Usage</legend>
 
 								<div class="col-sm-10">
 
 									<div class="form-check">
-										<label class="form-check-label"> <input
+										<label class="form-check-label"> 
+										<input
 											class="form-check-input" type="radio" name="prdusage"
 											id="soccerUsageType" value="Soccer"> Soccer
 										</label>
@@ -141,7 +171,7 @@
 								</div>
 							</fieldset>
 
-							<hr>
+							<hr> -->
 
 							<label class="col-sm-2 col-form-label"></label>
 

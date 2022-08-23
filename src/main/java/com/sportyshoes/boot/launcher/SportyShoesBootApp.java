@@ -1,5 +1,9 @@
 package com.sportyshoes.boot.launcher;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,46 +11,80 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.sportyshoes.model.beans.ProductBrand;
+import com.sportyshoes.model.beans.ProductGroup;
+import com.sportyshoes.model.beans.ProductUsage;
 import com.sportyshoes.model.beans.UserMgmt;
 import com.sportyshoes.model.repository.LoginRepository;
 
 @SpringBootApplication(scanBasePackages = "com")
 @EntityScan(basePackages = "com.sportyshoes.model.beans")
 public class SportyShoesBootApp implements CommandLineRunner {
-	
+
 	private static final Logger logger = LogManager.getLogger(SportyShoesBootApp.class);
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SpringApplication.run(SportyShoesBootApp.class, args);
-		//System.out.println("Server up on port number 8080");
+		// System.out.println("Server up on port number 8080");
 	}
 
 	@Override
-	public void run(String... args) throws Exception 
-	{
+	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		//logger.debug(">>> Start of CommandLineRunner.run() in " + this.getClass().getSimpleName() + " <<<<");
-		//this.quickTest();
-		//logger.debug(">>> end of CommandLineRunner.run() in " + this.getClass().getSimpleName() + " <<<<");
-		
+		// logger.debug(">>> Start of CommandLineRunner.run() in " +
+		// this.getClass().getSimpleName() + " <<<<");
+		// this.quickTest();
+		// logger.debug(">>> end of CommandLineRunner.run() in " +
+		// this.getClass().getSimpleName() + " <<<<");
+		doColumnDefaultInserts();
 	}
-	
+
 	@Autowired
-	private LoginRepository logindao;
-	
-	private void quickTest()
-	{
-		UserMgmt user = new UserMgmt();
-		
-		user.setEmailId("a@a.com");
-		user.setPassword("1");
-		user.setTypeOfUser("A"); 
-		
-		boolean result = logindao.validateLoginDetails(user);
-		logger.debug("<<<< Logged on found and validated with return code " + result + " >>>>");
-		
+	private EntityManagerFactory emf;
+
+	private void doColumnDefaultInserts() {
+		System.out.println("........Start of attempt to performing default admin table inserts......");
+		EntityManager manager = emf.createEntityManager();
+
+		try {
+
+			UserMgmt dbUser = manager.find(UserMgmt.class, "a@a.com");
+
+			if (null == dbUser) 
+			{
+				EntityTransaction tran = manager.getTransaction();
+				tran.begin();
+
+				dbUser = new UserMgmt();
+				dbUser.setEmailId("a@a.com"); //default value for Admin
+				
+				ProductBrand brand = new ProductBrand();
+				brand.setBrand_id("Nike");
+				
+				ProductUsage usage = new ProductUsage();
+				usage.setUsage_id("Athletics");
+				
+				manager.merge(dbUser);
+				manager.merge(brand);
+				manager.merge(usage);
+
+				tran.commit();
+				//System.out.println("........Default column insert completed......");
+			}
+			else
+			{
+				dbUser = null;
+				System.out.println("........ Admin tables default column inserts not applicable / required......");
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+			//return;
+		}
+		System.out.println("........End of performing default admin table inserts......");
+
 	}
 
 }

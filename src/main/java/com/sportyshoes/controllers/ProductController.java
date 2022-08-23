@@ -12,11 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.sportyshoes.model.beans.Product;
+import com.sportyshoes.model.beans.ProductBrand;
+import com.sportyshoes.model.beans.ProductUsage;
 import com.sportyshoes.model.services.ProductService;
 
 @Controller
@@ -26,9 +27,18 @@ public class ProductController
 	@Autowired
 	ProductService productService;
 	
+	private List<ProductBrand> pdrBrandList;
+	private List<ProductUsage> prdUsageList;
+	
 	@RequestMapping(value = "showProductView")
-	public String showProductCreate() 
+	public String showProductCreate(Model model) 
 	{
+		this.pdrBrandList  = productService.getAllProductBrand();
+		this.prdUsageList  = productService.getAllProductUsageTypes();
+		
+		 model.addAttribute("pdrBrandList", this.pdrBrandList);
+		 model.addAttribute("prdUsageList", this.prdUsageList);
+				
 		return "product";
 	}
 	
@@ -50,17 +60,40 @@ public class ProductController
 		e.printStackTrace();
 	   }
 	
-	   String prdusage = request.getParameter("prdusage");
-	   String prdbrand = request.getParameter("prdbrand");
+	   String usageid = request.getParameter("prdusage");
+	   String brandid = request.getParameter("prdbrand");
 	   
 	   Product product = new Product();
+	   
 	   product.setPrdid(prdid);
 	   product.setPrdname(prdname);
 	   product.setPrdprice(prdprice);
-	   product.setPrdbrand(prdbrand);
-	   product.setPrdusage(prdusage);
+	   
+	  
+	   
+	   ProductBrand productBrand = this.pdrBrandList
+			                           .stream()
+			                           .filter(element -> brandid.equalsIgnoreCase(element.getBrand_id()))
+			                           .findAny()
+			                           .orElse(null);
+	   
+	  product.setProductBrand(productBrand);
+	  
+	  ProductUsage productUsage = this.prdUsageList
+								  .stream()
+					              .filter(element -> usageid.equalsIgnoreCase(element.getUsage_id()))
+					              .findAny()
+					              .orElse(null);
+	  
+	   product.setProductUsage(productUsage);
+	   
 	   product.setPrdlogo(bytes);
+	   
+	   System.out.println("#############################################");
+	   
 	   System.out.println(product);
+	    
+	    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	   
 	   String result = productService.createProduct(product);  
 	   modelMap.addAttribute("msg", result);

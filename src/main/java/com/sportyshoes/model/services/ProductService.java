@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sportyshoes.model.beans.Product;
+import com.sportyshoes.model.beans.ProductBrand;
+import com.sportyshoes.model.beans.ProductGroup;
+import com.sportyshoes.model.beans.ProductUsage;
 import com.sportyshoes.model.repository.ProductRepository;
 
 @Service
@@ -30,8 +33,6 @@ public class ProductService
 	
 	public List<Product> getAllProducts()
 	{
-	//	List<Product> productList = productRepository.getAllProducts();
-		
 		List<Product> productList = productRepository.getAllProducts().stream()
 		                                   .map(element -> {
 		                                	   Product product =  element.toBuilder().build();
@@ -44,6 +45,17 @@ public class ProductService
 		
 		
 		return productList;
+	}
+
+	
+	public List<ProductBrand> getAllProductBrand() 
+	{
+		return productRepository.getAllProductBrand();
+	}
+	
+	public List<ProductUsage> getAllProductUsageTypes() 
+	{	 
+		return productRepository.getAllProductUsageTypes();
 	}
 	
 }

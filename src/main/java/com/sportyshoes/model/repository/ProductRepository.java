@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sportyshoes.model.beans.Product;
+import com.sportyshoes.model.beans.ProductBrand;
+import com.sportyshoes.model.beans.ProductGroup;
+import com.sportyshoes.model.beans.ProductUsage;
 
 @Repository
 public class ProductRepository {
@@ -33,8 +36,28 @@ public class ProductRepository {
 	public List<Product> getAllProducts() 
 	{
 		Query qry = manager.createQuery("select prd from Product prd");  
-		List<Product> productList = qry.getResultList();
-		return productList;
+		return qry.getResultList();
+	}
+	
+	/*public List<ProductGroup> getAllProductGroup() 
+	{
+		Query qry = manager.createQuery("select group from ProductGroup group");  
+		
+		
+		return qry.getResultList();
+	} */
+	
+	public List<ProductBrand> getAllProductBrand() 
+	{
+		Query qry = manager.createQuery("select brand from ProductBrand brand");  
+		
+		return qry.getResultList();
+	}
+	
+	public List<ProductUsage> getAllProductUsageTypes() 
+	{
+		Query qry = manager.createQuery("select usage from ProductUsage usage");  
+		return qry.getResultList();
 	}
 	
 }

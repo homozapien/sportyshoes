@@ -3,15 +3,16 @@ package com.sportyshoes.model.beans;
 
 
 
-import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,15 +22,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserMgmt implements Serializable
+@DynamicInsert
+@Builder(toBuilder=true)
+public class UserMgmt 
 {
-	private static final long serialVersionUID = 3756680645803624405L;
+	
 	@Id
-	//@ColumnDefault("'admin@sportyshoes.com'")
+	@ColumnDefault("'a@a.com'")
 	private String emailId;  
-	//@ColumnDefault("'1234'")
+	@ColumnDefault("'1'")
 	private String password; 
-	//@ColumnDefault("'Admin'")
+	@ColumnDefault("'Admin'")
 	private String typeOfUser;	
 	
 	

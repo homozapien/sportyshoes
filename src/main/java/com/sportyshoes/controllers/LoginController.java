@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+
 import com.sportyshoes.model.beans.UserMgmt;
 import com.sportyshoes.model.services.LoginService;
+
 
 @Controller
 @RequestMapping("/sportyshoes")
@@ -39,7 +42,9 @@ public class LoginController
 				
 		if(loginService.checkLoggedOnUser(user)) 
 		{
+			
 			returnView = typeOfUser.equalsIgnoreCase("Admin") ? "admin" : "customer";
+		
 			req.getSession().setAttribute("loggedInUser", returnView);
 		}
 		else

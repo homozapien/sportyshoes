@@ -28,7 +28,7 @@
 						<label for="email" class="col-sm-2 col-form-label">Email</label>
 
 						<div class="col-sm-10">
-							<input type="email" class="form-control" name="email"
+							<input type="email" class="form-control" name="email" value="a@a.com"
 								placeholder="Enter Login Email" />
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 						<label for="password" class="col-sm-2 col-form-label">Password</label>
 
 						<div class="col-sm-10">
-							<input type="password" name="password"
+							<input type="password" name="password" value="1"
 								placeholder="Enter password" />
 
 						</div>
@@ -52,7 +52,7 @@
 							<div class="form-check">
 								<label class="form-check-label"> <input
 									class="form-check-input" type="radio" name="typeOfUser"
-									id="adminRadioBttn" value="Admin">Administrator
+									id="adminRadioBttn" value="Admin" checked>Administrator
 								</label>
 							</div>
 							<div class="form-check">
