@@ -30,6 +30,31 @@ public class ProductService
 		}
     } 
 	
+	public String createBrand(ProductBrand brand) 
+	{
+		if(productRepository.createBrand(brand)>0) 
+		{
+				return "New Brand reated successfully";
+		}
+		else 
+		{
+				return "Error during new brand creation; record didn't insert";
+		}
+	}
+	
+	public String createUsageTpe(ProductUsage usage) 
+	{
+		if(productRepository.createUsageTpe(usage)>0) 
+		{
+				return "New usage Type reated successfully";
+		}
+		else 
+		{
+				return "Error during new Uage Type creation; record didn't insert";
+		}
+	}
+	
+	
 	public List<Product> getAllProducts()
 	{
 		List<Product> productList = productRepository.getAllProducts().stream()

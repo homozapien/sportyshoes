@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,7 @@ import com.sportyshoes.model.services.ProductService;
 
 @Controller
 @RequestMapping("/sportyshoes")
-public class ProductController 
+public class AdminTaskController 
 {
 	@Autowired
 	ProductService productService;
@@ -31,7 +32,7 @@ public class ProductController
 	private List<ProductUsage> prdUsageList;
 	private List<Product> productList;
 	
-	@RequestMapping(value = "showProductView")
+	@RequestMapping(value = "createproduct")
 	public String showProductCreate(Model model) 
 	{
 		 this.refreshDashboardData();		
@@ -39,6 +40,18 @@ public class ProductController
 		 model.addAttribute("prdUsageList", this.prdUsageList);
 				
 		return "product";
+	}
+	
+	@RequestMapping(value = "createbrand")
+	public String displayBrandView() 
+	{			
+		return "brand";
+	}
+	
+	@RequestMapping(value = "createusagetype")
+	public String displayUsageTypeView() 
+	{			
+		return "usage";
 	}
 	
 	@RequestMapping(value = "/createProduct",method = RequestMethod.POST)
@@ -92,6 +105,39 @@ public class ProductController
 	   modelMap.addAttribute("prdUsageList", this.prdUsageList);
 	   return "product";
 	}
+	
+	
+	@PostMapping(value = "createbrand")
+	public String createBrand(ModelMap modelMap,  HttpServletRequest request) 
+	{			
+		    String id   = request.getParameter("brandid");
+		    String name = request.getParameter("brandname");
+		   
+		    ProductBrand brand = new  ProductBrand();
+		    brand.setBrand_id(id);
+		    brand.setBrand_name(name);
+		    
+		    String result = productService.createBrand(brand);  
+		    modelMap.addAttribute("msg", result);
+		   
+		   return "brand";
+	}
+	
+	@PostMapping(value = "createusagetype")
+	public String createUsageType(ModelMap modelMap,  HttpServletRequest request) 
+	{	
+		String id   = request.getParameter("usageTypeId");
+		String name = request.getParameter("usagetypename");
+		
+		ProductUsage usage = new  ProductUsage();
+		usage.setUsage_id(id);
+		usage.setUsageType(name);
+		
+		String result = productService.createUsageTpe(usage);  
+		modelMap.addAttribute("msg", result);
+		return "usage";
+	}
+	
 	
 	@RequestMapping(value = "/refreshDashboard",method = RequestMethod.GET)
 	public String getAllDashBoardData(ModelMap modelMap)

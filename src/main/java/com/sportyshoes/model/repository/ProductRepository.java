@@ -31,19 +31,37 @@ public class ProductRepository {
 		}
 	}
 	
+	@Transactional
+	public int createBrand(ProductBrand brand) {
+		try 
+		{
+			manager.persist(brand);
+			return 1;
+		} catch (Exception e) {
+			System.out.println(e);
+			return 0;
+		}
+	}
+	
+	@Transactional
+	public int createUsageTpe(ProductUsage usage) {
+		try {
+
+			manager.persist(usage);
+			return 1;
+		} catch (Exception e) {
+			System.out.println(e);
+			return 0;
+		}
+	}
+	
+	
 	public List<Product> getAllProducts() 
 	{
 		Query qry = manager.createQuery("select prd from Product prd");  
 		return qry.getResultList();
 	}
 	
-	/*public List<ProductGroup> getAllProductGroup() 
-	{
-		Query qry = manager.createQuery("select group from ProductGroup group");  
-		
-		
-		return qry.getResultList();
-	} */
 	
 	public List<ProductBrand> getAllProductBrand() 
 	{

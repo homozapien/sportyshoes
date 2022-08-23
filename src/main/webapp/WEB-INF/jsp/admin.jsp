@@ -36,8 +36,18 @@
 						</tr>
 
 						<tr>
-							<td><a href="/sportyshoes/showProductView">Product Setup</a></td>
+							<td><a href="/sportyshoes/createproduct">Product</a></td>
 							<td>Setup Product Items</td>
+						</tr>  
+						
+						<tr>
+							<td><a href="/sportyshoes/createbrand"> Brand </a></td>
+							<td>Setup Product Brand</td>
+						</tr>
+						
+						<tr>
+							<td><a href="/sportyshoes/createusagetype">Usage Type</a></td>
+							<td>Setup Product Usage</td>
 						</tr>
 
 						<tr>
