@@ -41,9 +41,8 @@
 						</tr>
 
 						<tr>
-							<td><a href="/sportyshoes/getAllProducts">Reporting
-									Dashboard</a></td>
-							<td>Readonly Reporting Dashboard</td>
+							<td><a href=refreshDashboard>Reporting Dashboard</a></td>
+							<td> Reporting Dashboard</td>
 						</tr>
 					<tbody>
 				</table>

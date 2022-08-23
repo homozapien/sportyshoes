@@ -32,7 +32,5 @@ public class ProductBrand
 	@Column(columnDefinition = "varchar(255) default 'Nike'")
 	private String brand_name; //e.g. Nike, Addisda, New Balance
 
-	@OneToOne(mappedBy = "productBrand")
-	private Product product;
 
 }

@@ -29,13 +29,12 @@ public class ProductController
 	
 	private List<ProductBrand> pdrBrandList;
 	private List<ProductUsage> prdUsageList;
+	private List<Product> productList;
 	
 	@RequestMapping(value = "showProductView")
 	public String showProductCreate(Model model) 
 	{
-		this.pdrBrandList  = productService.getAllProductBrand();
-		this.prdUsageList  = productService.getAllProductUsageTypes();
-		
+		 this.refreshDashboardData();		
 		 model.addAttribute("pdrBrandList", this.pdrBrandList);
 		 model.addAttribute("prdUsageList", this.prdUsageList);
 				
@@ -69,8 +68,6 @@ public class ProductController
 	   product.setPrdname(prdname);
 	   product.setPrdprice(prdprice);
 	   
-	  
-	   
 	   ProductBrand productBrand = this.pdrBrandList
 			                           .stream()
 			                           .filter(element -> brandid.equalsIgnoreCase(element.getBrand_id()))
@@ -96,13 +93,24 @@ public class ProductController
 	   return "product";
 	}
 	
-	@RequestMapping(value = "/getAllProducts",method = RequestMethod.GET)
-	public String getAllProductItems(ModelMap modelMap)
+	@RequestMapping(value = "/refreshDashboard",method = RequestMethod.GET)
+	public String getAllDashBoardData(ModelMap modelMap)
 	{
-		List<Product> productList = productService.getAllProducts();
-		modelMap.addAttribute("productList", productList);
+		this.refreshDashboardData();
+		modelMap.addAttribute("productList",  this.productList);
+		modelMap.addAttribute("pdrBrandList", this.pdrBrandList);
+		modelMap.addAttribute("prdUsageList", this.prdUsageList);
 		return "dashboard";
 		
 	}
+	
+	private void refreshDashboardData() //helper method
+	{
+		this.productList   = productService.getAllProducts();
+		this.pdrBrandList  = productService.getAllProductBrand();
+		this.prdUsageList  = productService.getAllProductUsageTypes();
+		
+	}
+	
 
 }

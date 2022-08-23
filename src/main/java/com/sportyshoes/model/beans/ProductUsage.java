@@ -29,7 +29,4 @@ public class ProductUsage
 	@Column(columnDefinition = "varchar(255) default 'Athletics'")
 	private String usageType; //e.g. Athletics, Soccer, BasketBall, Hockey
 
-	@OneToOne(mappedBy = "productUsage")
-	private Product product;
-
 }
