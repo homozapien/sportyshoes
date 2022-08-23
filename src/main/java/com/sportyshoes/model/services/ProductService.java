@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.sportyshoes.model.beans.Product;
 import com.sportyshoes.model.beans.ProductBrand;
-import com.sportyshoes.model.beans.ProductGroup;
 import com.sportyshoes.model.beans.ProductUsage;
 import com.sportyshoes.model.repository.ProductRepository;
 

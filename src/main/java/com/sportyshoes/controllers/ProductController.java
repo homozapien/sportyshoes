@@ -89,14 +89,10 @@ public class ProductController
 	   
 	   product.setPrdlogo(bytes);
 	   
-	   System.out.println("#############################################");
-	   
-	   System.out.println(product);
-	    
-	    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-	   
 	   String result = productService.createProduct(product);  
 	   modelMap.addAttribute("msg", result);
+	   modelMap.addAttribute("pdrBrandList", this.pdrBrandList);
+	   modelMap.addAttribute("prdUsageList", this.prdUsageList);
 	   return "product";
 	}
 	
