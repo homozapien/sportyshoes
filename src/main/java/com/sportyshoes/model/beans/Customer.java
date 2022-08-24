@@ -19,6 +19,22 @@ public class Customer extends UserMgmt
 	@OneToOne(mappedBy = "customer", optional=true)
 	private PurchaseOrder order; 
 
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(String emailid, String password, String typeOfUser) {
+		super(emailid, password, typeOfUser);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(String emailid, String password, String typeOfUser, String firstname, String lastname) 
+	{
+		super(emailid, password, typeOfUser);
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
 
 	public String getFirstname() {
 		return firstname;

@@ -26,11 +26,11 @@ public class LoginRepository {
 
 		try {
 			TypedQuery<UserMgmt> query = entityMgr.createQuery(
-					                          "SELECT user FROM UserMgmt user " + " WHERE user.emailId = :emailId "
+					                          "SELECT user FROM UserMgmt user " + " WHERE user.emailid = :emailid "
 							          + "       and user.password = :password " + "       and user.typeOfUser = :typeOfUser",
 					UserMgmt.class);
 
-			UserMgmt dbUser = query.setParameter("emailId", user.getEmailid())
+			UserMgmt dbUser = query.setParameter("emailid", user.getEmailid())
 					.setParameter("password", user.getPassword()).setParameter("typeOfUser", user.getTypeOfUser())
 					.getSingleResult();
 
@@ -67,7 +67,6 @@ public class LoginRepository {
 			tran.begin();
 			int result = query.executeUpdate();
 			tran.commit();
-			logger.debug("<<<< Admin Password Updated with return code  " + result + " >>>>");
 			return result;
 
 		} catch (Exception e) {

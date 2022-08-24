@@ -5,11 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.sportyshoes.model.beans.Customer;
 import com.sportyshoes.model.beans.UserMgmt;
+import com.sportyshoes.model.services.CustomerService;
 import com.sportyshoes.model.services.LoginService;
 
 
@@ -20,10 +22,19 @@ public class LoginController
 	@Autowired
 	private LoginService loginService;
 	
+	@Autowired
+	CustomerService customerService;
+	
 	@RequestMapping(value = "/")
 	public String backToLogin() 
 	{   
 			return "login";					
+	}
+	
+	@RequestMapping(value = "signUp")
+	public String displaySignUp() 
+	{   
+			return "signUp";					
 	}
 	
 	@RequestMapping(value = "checkUser",method = RequestMethod.POST)
@@ -43,9 +54,19 @@ public class LoginController
 		if(loginService.checkLoggedOnUser(user)) 
 		{
 			
-			returnView = typeOfUser.equalsIgnoreCase("Admin") ? "admin" : "customer";
-		
-			req.getSession().setAttribute("loggedInUser", returnView);
+					if(typeOfUser.equalsIgnoreCase("Admin"))
+					{
+						returnView = "admin";
+						req.getSession().setAttribute("loggedInUser", returnView);
+					}
+					else
+					{
+						returnView = "marketsquare";
+						req.getSession().setAttribute("loggedInUser", "customer");
+						
+					}
+					
+					req.getSession().setAttribute("userId", email);
 		}
 		else
 		{
@@ -54,5 +75,27 @@ public class LoginController
 		return returnView;
 	}
 	
+	
+	@PostMapping(value = "createProfile")
+	public String createCustomer(HttpServletRequest req, Model model) 
+	{   
+		String email      = req.getParameter("emailid");
+		String password   = req.getParameter("password");
+		String firstname  = req.getParameter("firstname");
+		String lastname   = req.getParameter("lastname");		
+		String typeOfUser = "customer";
+		
+		String returnView = "login";
+		
+		Customer customer = new Customer(email, password, typeOfUser, firstname, lastname);
+		
+		String result = customerService.createProfile(customer);
+		
+		System.out.println(result);
+		
+		model.addAttribute("msg", result);
+		
+		return returnView;
+	}
 	
 }

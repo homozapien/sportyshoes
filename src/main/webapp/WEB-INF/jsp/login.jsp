@@ -9,13 +9,12 @@
 <body>
 
 	<c:if test="${not empty msg }">
-	<div class="container">
-	
-		<div class="alert alert-danger">${msg }</div>
-		
+	<div class="container">	
+		<div class="alert alert-danger">${msg }</div>		
 		</div>
 	</c:if>
 
+		
 	<div class="container">
 		<h2>SportyShoes Login Portal</h2>
 		<div class="card">
@@ -64,8 +63,10 @@
 						</div>
 					</fieldset>
 
-					<hr>
+					<hr/>
 
+                    <a class="btn btn-primary" href="/sportyshoes/signUp" role="button">Customer Sign up</a>	
+               
 					<label class="col-sm-2 col-form-label"></label>
 
 					<button type="submit" class="btn btn-primary">Submit</button>
