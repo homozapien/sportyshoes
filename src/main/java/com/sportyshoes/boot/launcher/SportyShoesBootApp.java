@@ -48,7 +48,7 @@ public class SportyShoesBootApp implements CommandLineRunner {
 				tran.begin();
 
 				dbUser = new UserMgmt();
-				dbUser.setEmailId("a@a.com"); //default value for Admin
+				dbUser.setEmailid("a@a.com"); //default value for Admin
 				
 				ProductBrand brand = new ProductBrand();
 				brand.setBrand_id("Nike");

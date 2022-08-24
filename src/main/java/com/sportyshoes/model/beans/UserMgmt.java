@@ -6,6 +6,9 @@ package com.sportyshoes.model.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -24,16 +27,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @DynamicInsert
 @Builder(toBuilder=true)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserMgmt 
 {
 	
 	@Id
 	@ColumnDefault("'a@a.com'")
-	private String emailId;  
+	private String emailid;  
 	@ColumnDefault("'1'")
 	private String password; 
 	@ColumnDefault("'Admin'")
 	private String typeOfUser;	
+	
+	
 	
 	
 }

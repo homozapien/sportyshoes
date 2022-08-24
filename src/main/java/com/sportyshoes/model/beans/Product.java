@@ -2,9 +2,10 @@ package com.sportyshoes.model.beans;
 
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
@@ -22,12 +23,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder=true)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Product 
 {	
 	@Id   
-	private String prdid; //unique item number for a product (e.g BarCode) ; can be tied to qtt during purchase
+	private String prdid; 
 	
-	private String prdname; //Product name
+	private String prdname; 
 	
     @Lob
     private byte[] prdlogo;

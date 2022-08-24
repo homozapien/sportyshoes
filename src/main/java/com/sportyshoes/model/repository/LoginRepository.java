@@ -30,7 +30,7 @@ public class LoginRepository {
 							          + "       and user.password = :password " + "       and user.typeOfUser = :typeOfUser",
 					UserMgmt.class);
 
-			UserMgmt dbUser = query.setParameter("emailId", user.getEmailId())
+			UserMgmt dbUser = query.setParameter("emailId", user.getEmailid())
 					.setParameter("password", user.getPassword()).setParameter("typeOfUser", user.getTypeOfUser())
 					.getSingleResult();
 
@@ -58,7 +58,7 @@ public class LoginRepository {
 		try {
 			Query query = entityMgr.createQuery(
 					"Update UserMgmt set password = :password where emailId = :emailId and typeOfUser = :typeOfUser")
-					.setParameter("emailId", userProfile.getEmailId())
+					.setParameter("emailId", userProfile.getEmailid())
 					.setParameter("password", userProfile.getPassword())
 					.setParameter("typeOfUser", userProfile.getTypeOfUser());
 

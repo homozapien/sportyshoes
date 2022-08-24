@@ -150,7 +150,7 @@ public class AdminTaskController
 		
 	}
 	
-	private void refreshDashboardData() //helper method
+	private void refreshDashboardData() 
 	{
 		this.productList   = productService.getAllProducts();
 		this.pdrBrandList  = productService.getAllProductBrand();

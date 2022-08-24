@@ -36,7 +36,7 @@ public class LoginController
 		String returnView = "login";
 		
 		UserMgmt user = new UserMgmt();
-		user.setEmailId(email);
+		user.setEmailid(email);
 		user.setPassword(password);
 		user.setTypeOfUser(typeOfUser);
 				
