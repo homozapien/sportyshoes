@@ -3,11 +3,8 @@ package com.sportyshoes.model.beans;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -20,9 +17,6 @@ public class Customer extends UserMgmt
 	private String firstname;
 	private String lastname;
 	private String creditCard;
-	
-  /* @OneToOne(mappedBy = "customer")
-	private PurchaseOrder order; */
    
 	@OneToMany(mappedBy = "customer") 
  	private Set<PurchaseOrder> setOfOrders; 

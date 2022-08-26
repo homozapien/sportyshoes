@@ -25,7 +25,6 @@ import com.sportyshoes.model.beans.Product;
 import com.sportyshoes.model.beans.PurchaseItem;
 import com.sportyshoes.model.beans.PurchaseOrder;
 import com.sportyshoes.model.services.CustomerService;
-import com.sportyshoes.model.services.ProductService;
 import com.sportyshoes.model.services.PurchaseOrderService;
 import com.sportyshoes.utils.Helper;
 import com.sportyshoes.utils.PaymentGatewayService;
