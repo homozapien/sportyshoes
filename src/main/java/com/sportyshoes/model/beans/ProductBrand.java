@@ -30,7 +30,7 @@ public class ProductBrand
 	private String brand_id;
 	
 	@Column(columnDefinition = "varchar(255) default 'Nike'")
-	private String brand_name; //e.g. Nike, Addisda, New Balance
+	private String brand_name; 
 
 
 }

@@ -1,22 +1,44 @@
 package com.sportyshoes.model.beans;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="purchaseitem")
-public class PurchaseItem extends Product
+public class PurchaseItem implements Serializable
 {  
+	private static final long serialVersionUID = 2561676627745387283L;
+
+	@Id
+	private String orderItemId;
+	
+	@OneToOne(fetch = FetchType.EAGER)  
+    @JoinColumn(name = "prdid", referencedColumnName = "prdid") 
+	private Product product;
+	
 	private int    quantity;
 	private double subTotalPrice;	
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional=false)
+	
+	@ManyToOne
     @JoinColumn(name = "orderid", referencedColumnName = "orderid")
-	private PurchaseOrder order; 
+	private PurchaseOrder order;
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 	public int getQuantity() {
 		return quantity;
@@ -42,11 +64,20 @@ public class PurchaseItem extends Product
 		this.order = order;
 	}
 
-	@Override
-	public String toString() {
-		return "PurchaseItem [prdid = " + this.getPrdid() + " quantity=" + quantity + ", subTotalPrice=" + subTotalPrice + ", order=" + order + "]";
-	} 
+	public String getOrderItemId() {
+		return orderItemId;
+	}
+
+	public void setOrderItemId(String orderItemId) {
+		this.orderItemId = orderItemId;
+	}
+
 	
 	
+	
+	
+	
+	
+
 	
 }

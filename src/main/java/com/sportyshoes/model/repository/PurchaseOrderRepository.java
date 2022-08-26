@@ -1,27 +1,26 @@
 package com.sportyshoes.model.repository;
 
 
-
 import javax.persistence.EntityManager;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sportyshoes.model.beans.Customer;
-
+import com.sportyshoes.model.beans.PurchaseOrder;
 
 @Repository
-public class CustomerRepository {
+public class PurchaseOrderRepository {
 
 	@Autowired
 	EntityManager manager;
 
 	@Transactional
-	public int createProfile(Customer customer) {
+	public int createPurchaseOrder(PurchaseOrder po) {
 		try 
 		{
-			manager.persist(customer);
+			manager.persist(po);
 			return 1;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -29,12 +28,6 @@ public class CustomerRepository {
 		}
 	}
 	
-	public Customer findCustomerProfileByRef(String emailid)
-	{
-		//return manager.find(Customer.class, emailid);
-		return manager.getReference(Customer.class, emailid);
-		
-	}
 	
 	
 }

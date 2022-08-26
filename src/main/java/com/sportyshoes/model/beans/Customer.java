@@ -1,14 +1,19 @@
 package com.sportyshoes.model.beans;
 
 
-import javax.persistence.Entity;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "customer")
+
 public class Customer extends UserMgmt
 {
 	
@@ -16,17 +21,20 @@ public class Customer extends UserMgmt
 	private String lastname;
 	private String creditCard;
 	
-	@OneToOne(mappedBy = "customer", optional=true)
-	private PurchaseOrder order; 
+  /* @OneToOne(mappedBy = "customer")
+	private PurchaseOrder order; */
+   
+	@OneToMany(mappedBy = "customer") 
+ 	private Set<PurchaseOrder> setOfOrders; 
+   
+   
 
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(String emailid, String password, String typeOfUser) {
 		super(emailid, password, typeOfUser);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(String emailid, String password, String typeOfUser, String firstname, String lastname, String creditCard) 
@@ -63,17 +71,19 @@ public class Customer extends UserMgmt
 		this.lastname = lastname;
 	}
 
-	public PurchaseOrder getOrder() {
-		return order;
+	
+
+	public Set<PurchaseOrder> getSetOfOrders() {
+		return setOfOrders;
 	}
 
-	public void setOrder(PurchaseOrder order) {
-		this.order = order;
+	public void setSetOfOrders(Set<PurchaseOrder> setOfOrders) {
+		this.setOfOrders = setOfOrders;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [firstname=" + firstname + ", lastname=" + lastname + ", order=" + order + "]";
+		return "Customer [firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
 	
 	

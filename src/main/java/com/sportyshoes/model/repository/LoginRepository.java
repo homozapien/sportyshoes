@@ -26,10 +26,12 @@ public class LoginRepository {
 					                          "SELECT user FROM UserMgmt user " + " WHERE user.emailid = :emailid "
 							          + "       and user.password = :password " + "       and user.typeOfUser = :typeOfUser",
 					UserMgmt.class);
+			
 
 			UserMgmt dbUser = query.setParameter("emailid", user.getEmailid())
 					.setParameter("password", user.getPassword()).setParameter("typeOfUser", user.getTypeOfUser())
 					.getSingleResult();
+			
 
 			boolean result = (dbUser == null) ? false : true;
            
@@ -38,8 +40,10 @@ public class LoginRepository {
 		} 
 		catch (javax.persistence.NoResultException e) 
 		{
+			System.err.println(e);
 			return false;
 		} catch (Exception e) {
+			System.err.println(e);
 			return false;
 		} 
 

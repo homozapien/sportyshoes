@@ -53,7 +53,7 @@ public class LoginController {
 		user.setEmailid(email);
 		user.setPassword(password);
 		user.setTypeOfUser(typeOfUser);
-
+		
 		if (loginService.checkLoggedOnUser(user)) {
 
 			if (typeOfUser.equalsIgnoreCase("Admin")) {
@@ -73,11 +73,10 @@ public class LoginController {
 				{
 					returnView = "closedmarketsquare";
 				}
-
 			}
-
 			req.getSession().setAttribute("userId", email);
-		} else {
+		} 
+		else {
 			model.addAttribute("msg", "Logon Failure,Try Again");
 		}
 		return returnView;

@@ -31,7 +31,7 @@
 
 								<div class="mb-3">
 
-									<form action="makepayment" method="post" role="form">
+									<form action="makepayment"  role="form">
 
 										<table class="table table-striped">
 											<caption align="top">Shopping Cart Item(s)</caption>
@@ -49,11 +49,11 @@
 												var="cartItem">
 												<tr>
 													<td><img alt="img"
-														src="data:image/jpeg;base64,${cartItem.base64PrdLogo}"
+														src="data:image/jpeg;base64,${cartItem.getProduct().getBase64PrdLogo()}"
 														width="60" height="60" /></td>
-													<td>${cartItem.prdname}</td>
+													<td>${cartItem.getProduct().getPrdname()}</td>
 													<td>${cartItem.quantity}</td>
-													<td>${cartItem.getPrdprice()}</td>
+													<td>${cartItem.getProduct().getPrdprice()}</td>
 													<td>${cartItem.subTotalPrice}</td>
 												</tr>
 

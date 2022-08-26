@@ -27,5 +27,12 @@ public class CustomerService
     } 
 	
 	
+	public Customer findCustomerProfileByRef(String emailid)
+	{
+		return custRepository.findCustomerProfileByRef(emailid);
+		
+	}
+	
+	
 	
 }
