@@ -17,8 +17,6 @@ public class PurchaseItem extends Product
 	@ManyToOne(fetch = FetchType.LAZY, optional=false)
     @JoinColumn(name = "orderid", referencedColumnName = "orderid")
 	private PurchaseOrder order; 
-	
-
 
 	public int getQuantity() {
 		return quantity;
@@ -46,7 +44,7 @@ public class PurchaseItem extends Product
 
 	@Override
 	public String toString() {
-		return "Item [quantity=" + quantity + ", subTotalPrice=" + subTotalPrice + ", order=" + order + "]";
+		return "PurchaseItem [prdid = " + this.getPrdid() + " quantity=" + quantity + ", subTotalPrice=" + subTotalPrice + ", order=" + order + "]";
 	} 
 	
 	

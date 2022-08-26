@@ -19,10 +19,7 @@ public class LoginRepository {
 	@Autowired
 	EntityManager entityMgr;
 
-	private static final Logger logger = LogManager.getLogger(LoginRepository.class);
-
 	public boolean validateLoginDetails(UserMgmt user) {
-		logger.debug(">>> Start of validateLoginDetails() in " + this.getClass().getSimpleName() + " <<<<");
 
 		try {
 			TypedQuery<UserMgmt> query = entityMgr.createQuery(
@@ -41,20 +38,15 @@ public class LoginRepository {
 		} 
 		catch (javax.persistence.NoResultException e) 
 		{
-			logger.catching(e);
 			return false;
 		} catch (Exception e) {
-			logger.catching(e);
 			return false;
-		} finally {
-			logger.debug("<<<< End of validateLoginDetails() in " + this.getClass().getSimpleName() + " >>>>");
-		}
+		} 
 
 	}
 
 	public int changeAdminPassword(UserMgmt userProfile) {
 		
-		logger.debug(">>> Start of changeAdminPassword() in " + this.getClass().getSimpleName() + " <<<<");
 		try {
 			Query query = entityMgr.createQuery(
 					"Update UserMgmt set password = :password where emailId = :emailId and typeOfUser = :typeOfUser")
@@ -70,10 +62,7 @@ public class LoginRepository {
 			return result;
 
 		} catch (Exception e) {
-			logger.catching(e);
 			return 0;
-		} finally {
-			logger.debug("<<<< End of changeAdminPassword() in " + this.getClass().getSimpleName() + " >>>>");
 		}
 
 	}

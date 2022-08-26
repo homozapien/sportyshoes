@@ -1,9 +1,8 @@
 package com.sportyshoes.model.beans;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,6 +14,7 @@ public class Customer extends UserMgmt
 	
 	private String firstname;
 	private String lastname;
+	private String creditCard;
 	
 	@OneToOne(mappedBy = "customer", optional=true)
 	private PurchaseOrder order; 
@@ -29,11 +29,12 @@ public class Customer extends UserMgmt
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String emailid, String password, String typeOfUser, String firstname, String lastname) 
+	public Customer(String emailid, String password, String typeOfUser, String firstname, String lastname, String creditCard) 
 	{
 		super(emailid, password, typeOfUser);
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.creditCard = creditCard;
 	}
 
 	public String getFirstname() {
@@ -46,6 +47,16 @@ public class Customer extends UserMgmt
 
 	public String getLastname() {
 		return lastname;
+	}
+	
+	
+
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
 	}
 
 	public void setLastname(String lastname) {

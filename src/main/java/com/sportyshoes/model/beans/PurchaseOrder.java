@@ -28,7 +28,6 @@ public class PurchaseOrder
 {
 
 	@Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderid;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order") 

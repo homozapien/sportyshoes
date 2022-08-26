@@ -57,6 +57,18 @@
 											placeholder="Enter password" required />
 									</div>
 								</div>
+								
+								<div class="row mb-3">
+
+									<label for="creditCard" class="col-sm-2 col-form-label">Credit Card</label>
+										
+
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm"
+											name="creditCard" aria-label="default input"
+											placeholder="Enter your credit card" required />
+									</div>
+								</div>
 
 								<hr>
 

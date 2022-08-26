@@ -70,7 +70,7 @@ public class ProductService
 		
 		return productList;
 	}
-
+	
 	
 	public List<ProductBrand> getAllProductBrand() 
 	{

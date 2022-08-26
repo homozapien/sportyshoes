@@ -109,69 +109,7 @@
 							
 							
 							<hr />
-						<!--  	<fieldset class="row mb-3">
-
-								<legend class="col-form-label col-sm-2 pt-0">Usage</legend>
-
-								<div class="col-sm-10">
-
-									<div class="form-check">
-										<label class="form-check-label"> 
-										<input
-											class="form-check-input" type="radio" name="prdusage"
-											id="soccerUsageType" value="Soccer"> Soccer
-										</label>
-									</div>
-									<div class="form-check">
-										<label class="form-check-label"> <input
-											class="form-check-input" type="radio" name="prdusage"
-											id="athleticsUsageType" value="Athletics"> Athletics
-										</label>
-									</div>
-									<div class="form-check">
-										<label class="form-check-label"> <input
-											class="form-check-input" type="radio" name="prdusage"
-											id="skatingUsageType" value="Skating"> Skating
-										</label>
-									</div>
-									<div class="form-check">
-										<label class="form-check-label"> <input
-											class="form-check-input" type="radio" name="prdusage"
-											id="tennisUsageType" value="Tennis"> Tennis
-										</label>
-									</div>
-								</div>
-							</fieldset>
-							<hr />
-							<fieldset class="row mb-3">
-
-								<legend class="col-form-label col-sm-2 pt-0">Brand</legend>
-
-								<div class="col-sm-10">
-
-									<div class="form-check">
-										<label class="form-check-label"> <input
-											class="form-check-input" type="radio" name="prdbrand"
-											id="nikeBrand" value="Nike"> Nike
-										</label>
-									</div>
-									<div class="form-check">
-										<label class="form-check-label"> <input
-											class="form-check-input" type="radio" name="prdbrand"
-											id="adidasBrand" value="Adidas"> Adidas
-										</label>
-									</div>
-									<div class="form-check">
-										<label class="form-check-label"> <input
-											class="form-check-input" type="radio" name="prdbrand"
-											id="genericBrand" value="Generic"> Generic
-										</label>
-									</div>
-
-								</div>
-							</fieldset>
-
-							<hr> -->
+						
 
 							<label class="col-sm-2 col-form-label"></label>
 
