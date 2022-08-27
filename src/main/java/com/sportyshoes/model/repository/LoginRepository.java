@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportyshoes.model.beans.UserMgmt;
 
@@ -49,6 +50,7 @@ public class LoginRepository {
 
 	}
 
+	@Transactional
 	public int changeAdminPassword(UserMgmt userProfile) {
 		
 		try {
@@ -58,14 +60,12 @@ public class LoginRepository {
 					.setParameter("password", userProfile.getPassword())
 					.setParameter("typeOfUser", userProfile.getTypeOfUser());
 
-			EntityTransaction tran = entityMgr.getTransaction();
-
-			tran.begin();
-			int result = query.executeUpdate();
-			tran.commit();
-			return result;
-
-		} catch (Exception e) {
+			
+			return  query.executeUpdate();
+		} 
+		catch (Exception e)
+		{
+			System.err.println(e);
 			return 0;
 		}
 

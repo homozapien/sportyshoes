@@ -40,6 +40,11 @@ public class LoginController {
 	public String displaySignUp() {
 		return "signUp";
 	}
+	
+	@RequestMapping(value = "changePassword")
+	public String changePassword() {
+		return "passwordmgmt";
+	}
 
 	@RequestMapping(value = "checkUser", method = RequestMethod.POST)
 	public String checkUserDetails(HttpServletRequest req, Model model) {
@@ -58,14 +63,12 @@ public class LoginController {
 
 			if (typeOfUser.equalsIgnoreCase("Admin")) {
 				returnView = "admin";
-				req.getSession().setAttribute("loggedInUser", returnView);
 			} 
 			else
 			{
 				List<Product> productList = productService.getAllProducts(); 
 				if(!productList.isEmpty())
 				{
-					req.getSession().setAttribute("loggedInUser", "customer");
 					req.getSession().setAttribute("productList", productList);
 					returnView = "marketsquare";
 				}
@@ -74,7 +77,8 @@ public class LoginController {
 					returnView = "closedmarketsquare";
 				}
 			}
-			req.getSession().setAttribute("userId", email);
+
+			req.getSession().setAttribute("loggedInUser", user);
 		} 
 		else {
 			model.addAttribute("msg", "Logon Failure,Try Again");
@@ -100,6 +104,37 @@ public class LoginController {
 		model.addAttribute("msg", result);
 
 		return returnView;
+	}
+	
+	
+	@PostMapping(value = "passwordmgmt")
+	public String changePassword(HttpServletRequest req, Model model) 
+	{
+		String email          = req.getParameter("emailid");
+		String currentPassword = req.getParameter("currentpassword");
+		String newpassword    = req.getParameter("newpassword");
+		
+
+		UserMgmt userProfile = (UserMgmt)req.getSession().getAttribute("loggedInUser");
+		System.out.println(userProfile);
+		
+		if(userProfile.getPassword().equals(currentPassword))
+		{
+			userProfile.setPassword(newpassword);
+			
+			String result = loginService.changeLoggedOnUserPassword(userProfile);
+			
+			model.addAttribute("msg", result);
+			return "login";
+		}
+		else
+		{
+			model.addAttribute("msg", "Invalid current password provided, try again ");
+			return "passwordmgmt";
+					
+		}
+		
+		
 	}
 
 }

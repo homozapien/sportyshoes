@@ -11,8 +11,6 @@
 	<button class="btn btn-dark" onclick="history.back()">Go Back</button>
 	<hr>
 
-	<c:set var="custUser" value="customer" />
-	
 	<c:if test="${not empty msg }">
 
 		<div class="container">
@@ -21,10 +19,13 @@
 
 		</div>
 	</c:if>
+	
+<c:set var="custUser" value="customer" />
+	<c:set var="user" value="${sessionScope.loggedInUser}" />
 
 	<c:choose>
 		<c:when
-			test="${not empty sessionScope.loggedInUser && sessionScope.loggedInUser.equalsIgnoreCase(custUser)}">
+			test="${not empty user && user.getTypeOfUser().equalsIgnoreCase(custUser)}">
 
 			<div class="container">
 				<div class="jumbotron">

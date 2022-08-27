@@ -24,6 +24,7 @@ import com.sportyshoes.model.beans.Customer;
 import com.sportyshoes.model.beans.Product;
 import com.sportyshoes.model.beans.PurchaseItem;
 import com.sportyshoes.model.beans.PurchaseOrder;
+import com.sportyshoes.model.beans.UserMgmt;
 import com.sportyshoes.model.services.CustomerService;
 import com.sportyshoes.model.services.PurchaseOrderService;
 import com.sportyshoes.utils.Helper;
@@ -129,7 +130,8 @@ public class ShoppingController {
 	public String makePayment(HttpServletRequest req, Model model) 
 	{
 		
-		String emailId = (String)req.getSession().getAttribute("userId");
+		UserMgmt user = (UserMgmt)req.getSession().getAttribute("loggedInUser");
+		String  emailId = user.getEmailid();
 		
 		List<PurchaseItem> listOfItems = (List<PurchaseItem>)req.getSession().getAttribute("cartItemList");
 		

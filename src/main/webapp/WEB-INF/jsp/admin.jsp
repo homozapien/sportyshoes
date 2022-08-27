@@ -12,10 +12,11 @@
 	<hr>
 
 	<c:set var="adminUser" value="admin" />
+	<c:set var="user" value="${sessionScope.loggedInUser}" />
 
 	<c:choose>
 		<c:when
-			test="${not empty sessionScope.loggedInUser && sessionScope.loggedInUser.equalsIgnoreCase(adminUser)}">
+			test="${not empty user && user.getTypeOfUser().equalsIgnoreCase(adminUser)}">
 
 			<div class="container">
 				<div class="jumbotron">
@@ -31,7 +32,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="passwordmgmt.jsp">Change Password</a></td>
+							<td><a href="/sportyshoes/changePassword">Change Password</a></td>
 							<td>Password Management</td>
 						</tr>
 

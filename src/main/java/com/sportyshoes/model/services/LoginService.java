@@ -20,9 +20,17 @@ public class LoginService implements LoginProcess
 	}
 
 	@Override
-	public int changeLoggedOnUserPassword(UserMgmt user) {
+	public String changeLoggedOnUserPassword(UserMgmt user) {
 		
-		return loginRepository.changeAdminPassword(user);
+		if(loginRepository.changeAdminPassword(user) > 0)
+		{
+			return "Password updated was successful";
+		}
+		else
+		{
+			return "Password update was unsuccessful";
+		}
+	
 	}
 
 }
