@@ -116,7 +116,6 @@ public class LoginController {
 		
 
 		UserMgmt userProfile = (UserMgmt)req.getSession().getAttribute("loggedInUser");
-		System.out.println(userProfile);
 		
 		if(userProfile.getPassword().equals(currentPassword))
 		{
