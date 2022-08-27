@@ -162,16 +162,19 @@ public class ShoppingController {
 	    String view = "";
 	   if(poService.createPurchaseOrder(po))
 	   {
-		   msg = "New Purchase Order  created successfully";
+		    msg = "New Purchase Order  created successfully";
 		    totalPrice = 0.0;
 			req.getSession().removeAttribute("cartItemList");
 			req.getSession().removeAttribute("totalPrice");
 			this.cartItemMap.clear();
-			view = "success";
+			model.addAttribute("orderid", po.getOrderid());
+			model.addAttribute("totalPrice", po.getOrderTotalPrice());
+			model.addAttribute("itemList", po.getItem().stream().collect(Collectors.toList()));
+			view = "invoice";
 	   }
 	   else
 	   {
-		   msg = "Error during purchase order creation; record didn't insert"; 
+		   msg   = "Error during purchase order creation; record didn't insert"; 
 		   view  = "failure";
 	   }
 	   
