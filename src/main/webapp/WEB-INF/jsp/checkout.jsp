@@ -20,7 +20,7 @@
 
 			<div class="container">
 				<div class="jumbotron">
-					<h2>SportyShoes Checkout</h2>
+					<h2>SportyShoes Customer Checkout</h2>
 				</div>
 				<br />
 				<c:choose>

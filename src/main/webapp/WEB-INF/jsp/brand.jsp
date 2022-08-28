@@ -29,7 +29,7 @@
 
 			<div class="container">
 				<div class="jumbotron">
-					<h2>Brand Registration</h2>
+					<h2>Product Brand Registration</h2>
 				</div>
 				<div class="card">
 					<div class="card-body">
