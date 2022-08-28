@@ -21,7 +21,8 @@
 				<div class="jumbotron">
 					<h2>Products List</h2>
 				</div>
-
+<div class="card">
+					<div class="card-body">
 				<c:choose>
 					<c:when test="${not empty productList}">
 
@@ -58,14 +59,15 @@
 					</c:otherwise>
 				</c:choose>
 
-			</div>
+			</div></div></div>
 			<hr/>
 			
 			<div class="container">
 				<div class="jumbotron">
 					<h2>All available Brand List</h2>
 				</div>
-
+<div class="card">
+					<div class="card-body">
 				<c:choose>
 					<c:when test="${not empty pdrBrandList}">
 
@@ -94,7 +96,7 @@
 					</c:otherwise>
 				</c:choose>
 
-			</div>
+			</div></div></div>
 			
 			<hr/>
 			
@@ -102,7 +104,8 @@
 				<div class="jumbotron">
 					<h2>All available Usage List</h2>
 				</div>
-
+<div class="card">
+					<div class="card-body">
 				<c:choose>
 					<c:when test="${not empty prdUsageList}">
 
@@ -133,7 +136,7 @@
 					</c:otherwise>
 				</c:choose>
 
-			</div>
+			</div></div></div>
 			
 
 		</c:when>

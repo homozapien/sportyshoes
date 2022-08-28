@@ -1,6 +1,8 @@
 package com.sportyshoes.model.repository;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 
@@ -26,6 +28,12 @@ public class PurchaseOrderRepository {
 			System.out.println(e);
 			return 0;
 		}
+	}
+	
+	public List<PurchaseOrder> getAllPurchaseOrders()
+	{
+		List<PurchaseOrder> lisftOfPOs = manager.createQuery("from PurchaseOrder").getResultList();
+		return lisftOfPOs;
 	}
 	
 	

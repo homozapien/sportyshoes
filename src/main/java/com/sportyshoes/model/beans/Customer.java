@@ -77,10 +77,10 @@ public class Customer extends UserMgmt
 
 	@Override
 	public String toString() {
-		return "Customer [firstname=" + firstname + ", lastname=" + lastname + "]";
+		return "Customer [firstname=" + firstname + ", lastname=" + lastname + ", creditCard=" + creditCard
+				+ ", setOfOrders=" + setOfOrders + "]";
 	}
-	
-	
+
 	
     
 }

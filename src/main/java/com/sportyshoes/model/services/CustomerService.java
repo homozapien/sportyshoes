@@ -2,6 +2,8 @@ package com.sportyshoes.model.services;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,13 @@ public class CustomerService
 	public Customer findCustomerProfileByRef(String emailid)
 	{
 		return custRepository.findCustomerProfileByRef(emailid);
+		
+	}
+	
+	
+	public List<Customer> getAllCustomerProfiles()
+	{
+		return custRepository.getAllCustomerprofiles();
 		
 	}
 	

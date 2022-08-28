@@ -2,6 +2,8 @@ package com.sportyshoes.model.repository;
 
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,13 @@ public class CustomerRepository {
 		//return manager.find(Customer.class, emailid);
 		return manager.getReference(Customer.class, emailid);
 		
+	}
+	
+	public List<Customer> getAllCustomerprofiles()
+	{
+		List<Customer> listofCustmers = manager.createQuery(" from Customer ").getResultList();  
+		
+		return listofCustmers;
 	}
 	
 	

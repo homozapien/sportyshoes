@@ -72,6 +72,12 @@ public class PurchaseItem implements Serializable
 		this.orderItemId = orderItemId;
 	}
 
+	@Override
+	public String toString() {
+		return "PurchaseItem [orderItemId=" + orderItemId + ", product=" + product + ", quantity=" + quantity
+				+ ", subTotalPrice=" + subTotalPrice + "]";
+	}
+
 	
 	
 	
